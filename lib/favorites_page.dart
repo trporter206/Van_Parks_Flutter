@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import 'location_widget.dart';
 import 'main.dart';
+import 'location_detail_page.dart';
 
 class FavoritesPage extends StatefulWidget {
 
@@ -28,13 +29,31 @@ class FavoritesPageState extends State<FavoritesPage> {
 class LocationsListWidget extends StatelessWidget {
   final List<LocationWidget> locations;
 
-  const LocationsListWidget({super.key, required this.locations});
+  const LocationsListWidget({Key? key, required this.locations}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ListView(
       children: locations.map((LocationWidget locationWidget) {
-        return Text(locationWidget.location.name);
+        return Center(
+          child: InkWell(  // Wrap Card with InkWell
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => DetailPage(locationWidget: locationWidget,),
+                ),
+              );
+            },
+            child: Card(
+              child: SizedBox(
+                width: 300,
+                height: 100,
+                child: Center(child: Text(locationWidget.location.name)),
+              ),
+            ),
+          ),
+        );
       }).toList(),
     );
   }

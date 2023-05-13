@@ -27,6 +27,12 @@ class DetailPageState extends State<DetailPage> {
           child: Column (
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              ElevatedButton(
+                  onPressed: () => appState.toggleFavorite(locationWidget),
+                  child: Text(
+                      favoriteLocations.contains(locationWidget) ? "Remove from favorites" : "Add to favorites"
+                  )
+              ),
               Text(locationWidget.location.features[0]),
               Text(locationWidget.location.features[1]),
             ],
