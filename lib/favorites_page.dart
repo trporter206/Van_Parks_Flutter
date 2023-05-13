@@ -1,28 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'location_widget.dart';
+import 'main.dart';
 
-class FavoritesPage extends StatelessWidget {
+class FavoritesPage extends StatefulWidget {
 
-  static List<LocationWidget> locationWidgets = [
-    LocationWidget(location: Location(
-      name: 'Central Park',
-      coordinates: Coordinate(latitude: 49.257714, longitude: -123.099294),
-      features: ['Playgrounds', 'Zoo', 'Museums'],
-    )),
-    LocationWidget(location: Location(
-      name: 'Stanley Park',
-      coordinates: Coordinate(latitude: 49.273982, longitude: -123.117628),
-      features: ['Playgrounds', 'Zoo', 'Museums'],
-    )),
-  ];
+  const FavoritesPage({Key? key}) : super(key: key);
 
-  const FavoritesPage({super.key});
+  @override
+  FavoritesPageState createState() => FavoritesPageState();
+}
+
+class FavoritesPageState extends State<FavoritesPage> {
+  late List<LocationWidget> locations;
 
   @override
   Widget build(BuildContext context) {
+    var appState = context.watch<MyAppState>();
+    locations = appState.favoriteLocations;
     return Scaffold(
-      body: LocationsListWidget(locations: locationWidgets),
+      body: LocationsListWidget(locations: locations),
     );
   }
 }
