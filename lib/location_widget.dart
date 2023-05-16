@@ -13,13 +13,23 @@ class Coordinate {
 
 class Location {
   final String name;
+  final String about;
+  final String neighbourhood;
+  final String size;
+  final String address;
   final Coordinate coordinates;
   final List<String> features;
+  final String washrooms;
 
   Location({
     required this.name,
+    required this.about,
+    required this.neighbourhood,
+    required this.size,
+    required this.address,
     required this.coordinates,
     required this.features,
+    required this.washrooms
   });
 }
 

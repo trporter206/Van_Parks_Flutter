@@ -2,12 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:provider/provider.dart';
 
 import 'explore_page.dart';
 import 'favorites_page.dart';
 import 'location_widget.dart';
-import 'main.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});

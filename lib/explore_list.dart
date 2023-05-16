@@ -1,25 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
 import 'location_widget.dart';
 import 'main.dart';
+import 'package:provider/provider.dart';
 import 'locations_list_widget.dart';
 
-class FavoritesPage extends StatefulWidget {
+class ExploreList extends StatefulWidget {
 
-  const FavoritesPage({Key? key}) : super(key: key);
+  const ExploreList({Key? key}) : super(key: key);
 
   @override
-  FavoritesPageState createState() => FavoritesPageState();
+  ExploreListState createState() => ExploreListState();
 }
 
-class FavoritesPageState extends State<FavoritesPage> {
+class ExploreListState extends State<ExploreList> {
   late List<LocationWidget> locations;
 
   @override
   Widget build(BuildContext context) {
     var appState = context.watch<MyAppState>();
-    locations = appState.favoriteLocations;
+    locations = appState.locations;
     return Scaffold(
       body: LocationsListWidget(locations: locations),
     );

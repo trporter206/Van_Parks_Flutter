@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
         ),
-        home: MyHomePage(),
+        home: const MyHomePage(),
       ),
     );
   }
@@ -34,21 +34,18 @@ class MyApp extends StatelessWidget {
 class MyAppState extends ChangeNotifier {
   var favoriteLocations = <LocationWidget>[];
   var locations = <LocationWidget>[
-    LocationWidget(location: Location(
-      name: 'Central Park',
-      coordinates: Coordinate(latitude: 49.257714, longitude: -123.099294),
-      features: ['Playgrounds', 'Zoo', 'Museums'],
-    )),
-    LocationWidget(location: Location(
-      name: 'Stanley Park',
-      coordinates: Coordinate(latitude: 49.273982, longitude: -123.117628),
-      features: ['Playgrounds', 'Zoo', 'Museums'],
-    )),
-    LocationWidget(location: Location(
-      name: 'Pleasant Park',
-      coordinates: Coordinate(latitude: 49.276090, longitude: -123.152661),
-      features: ['Playgrounds', 'Zoo', 'Museums'],
-    )),
+    LocationWidget(location:
+      Location(
+        name: 'Kitsilano Beach Park',
+        about: 'This very popular park boasts clean sand beaches, beautiful views of English Bay and downtown Vancouver, the fantastic Boathouse restaurant, and wide lawns perfect for throwing a Frisbee or relaxing in the sun.  The sparkling salt waters of the heated outdoor pool are especially inviting, and the pool has the distinction of being Canada\'s longest at 137m.A playground is the park\'s newest feature. The city\'s largest fully accessible playground is a legacy of the Vancouver 2010 Olympic and Paralympic Winter Games and one of three showcase inclusive playgrounds built in the 2010 Winter Games host communities of Vancouver, Whistler and Richmond. New play opportunities such as sand play table, rotating climber, and saucer swings have been included to ensure universal access and encourage imaginative play, sensory experiences and fun for children of all ages and abilities. A wheelchair accessible surface also allows parents and caregivers with physical disabilities access to the playground.',
+        address: '1499 Arbutus Street',
+        coordinates: Coordinate(latitude: 49.273431, longitude: -123.153901),
+        features: ['Basketball Courts', 'Beaches', 'Food Concessions', 'Outdoor Swimming Pools'],
+        neighbourhood: 'Kitsilano',
+        size: '13.47',
+        washrooms: 'Y',
+      )
+    ),
   ];
 
   void toggleFavorite([LocationWidget? locationWidget]) {
