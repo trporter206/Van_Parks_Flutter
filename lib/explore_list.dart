@@ -18,7 +18,7 @@ class ExploreListState extends State<ExploreList> {
   @override
   Widget build(BuildContext context) {
     var appState = context.watch<MyAppState>();
-    locations = appState.locations;
+    locations = appState.filteredLocations;
     return Scaffold(
       body: LocationsListWidget(locations: locations),
     );

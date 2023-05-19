@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'location_detail_page.dart';
 import 'main.dart';
 import 'explore_list.dart'; // Don't forget to import ExploreList
+import 'filter_widget.dart';
 
 class ExplorePage extends StatefulWidget {
   const ExplorePage({Key? key}) : super(key: key);
@@ -20,7 +21,8 @@ class ExplorePageState extends State<ExplorePage> {
   @override
   Widget build(BuildContext context) {
     var appState = context.watch<MyAppState>();
-    markers = appState.locations.map((locationWidget) => Marker(
+    var filteredLocations = appState.filteredLocations;
+    markers = filteredLocations.map((locationWidget) => Marker(
       markerId: MarkerId(locationWidget.location.name),
       position: LatLng(
           locationWidget.location.coordinates.latitude,
@@ -41,6 +43,7 @@ class ExplorePageState extends State<ExplorePage> {
     return Scaffold(
       body: Column(
         children: [
+          FilterWidget(locations: appState.locations, features: ['Basketball Courts', 'Soccer Fields']),
           ElevatedButton(
             onPressed: () {
               setState(() {

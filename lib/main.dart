@@ -46,7 +46,24 @@ class MyAppState extends ChangeNotifier {
         washrooms: 'Y',
       )
     ),
+    LocationWidget(location:
+      Location(
+        name: 'Queen Elizabeth Park',
+        about: 'Prince Edward Park’s play areas overlook an open grassy field, perfect for a game of soccer or for throwing a Frisbee.  Relax on a bench or meet with neighbours for an evening stroll around the park.',
+        address: '4600 Cambie Street',
+        coordinates: Coordinate(latitude: 49.240978, longitude: -123.112028),
+        features: ['Field Houses', 'Playgrounds', 'Soccer Fields', 'Washrooms', 'Water/Spray Parks'],
+        neighbourhood: 'Riley-Little Mountain',
+        size: '52.98',
+        washrooms: 'Y',
+      )
+    ),
   ];
+  var filteredLocations = <LocationWidget>[];
+
+  MyAppState() {
+    filteredLocations = List.from(locations);
+  }
 
   void toggleFavorite([LocationWidget? locationWidget]) {
     if (locationWidget != null && favoriteLocations.contains(locationWidget)) {
@@ -54,6 +71,11 @@ class MyAppState extends ChangeNotifier {
     } else if (locationWidget != null) {
       favoriteLocations.add(locationWidget);
     }
+    notifyListeners();
+  }
+
+  void updateFilteredLocations(List<LocationWidget> newLocations) {
+    filteredLocations = newLocations;
     notifyListeners();
   }
 }

@@ -21,7 +21,25 @@ class FavoritesPageState extends State<FavoritesPage> {
     var appState = context.watch<MyAppState>();
     locations = appState.favoriteLocations;
     return Scaffold(
-      body: LocationsListWidget(locations: locations),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child:
+              Text(
+                'You have ${locations.length} favorite parks',
+                style:
+                  TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
+              ),
+          ),
+          Expanded(
+              child: LocationsListWidget(locations: locations),
+          ),
+        ],
+      )
     );
   }
 }
