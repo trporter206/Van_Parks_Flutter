@@ -43,7 +43,7 @@ class ExplorePageState extends State<ExplorePage> {
     return Scaffold(
       body: Column(
         children: [
-          FilterWidget(locations: appState.locations, features: ['Basketball Courts', 'Soccer Fields']),
+          FilterWidget(locations: appState.locations),
           ElevatedButton(
             onPressed: () {
               setState(() {
